@@ -4,6 +4,7 @@ const cors = require('cors');
 const { default: mongoose } = require('mongoose');
 const User = require('./models/User')
 const app = express();
+const cookieParser = require('cookie-parser')
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -12,8 +13,7 @@ app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 
 const jwt = require('jsonwebtoken');
-
-
+app.use(cookieParser());
 mongoose.connect(process.env.MY, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
@@ -56,6 +56,11 @@ app.post('/login', async (req,res) => {
   });
 
 
+
+
+  app.get('/profile', (res, req) =>{
+      res.json(req.cookies)
+  })    
 
 
 app.listen(4000, () => {
