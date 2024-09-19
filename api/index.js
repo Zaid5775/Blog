@@ -58,9 +58,38 @@ app.post('/login', async (req,res) => {
 
 
 
-  app.get('/profile', (res, req) =>{
-      res.json(req.cookies)
+  app.get('/profile', (req, res) =>{
+    const {token} =  req.cookies;
+    jwt.verify(token, process.env.SECRET, {}, (err, info) =>{
+      if(err) throw err;
+      res.json(info);
+    })
+    
   })    
+
+
+
+
+  app.post('/logout', (req,res) => {
+    res.cookie('token', '').json('ok');
+  });
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 app.listen(4000, () => {
