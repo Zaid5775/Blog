@@ -1,8 +1,11 @@
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
 import {UserContext} from "./UserContext";
+import Footer from "./pages/Footer";
+
 
 export default function Header() {
+  const location = useLocation();
   const {setUserInfo,userInfo} = useContext(UserContext);
   useEffect(() => {
     fetch('http://localhost:4000/profile', {
@@ -23,24 +26,44 @@ export default function Header() {
   }
 
   const username = userInfo?.username;
+  const isActive = (path) => location.pathname === path
+
 
   return (
+    <>
     <header>
-      <Link to="/" className="logo">MyBlog</Link>
+      <Link to="/" className={`logo ${isActive('/')?'active': ''}`}>MyBlog</Link>
       <nav>
         {username && (
           <>
-            <Link to="/create">Create new post</Link>
-            <a onClick={logout}>Logout</a>
+
+            <Link  
+            className={`mm ${isActive('/create')?'active': ''}`}
+            to="/create">Create new post 
+            </Link>
+
+            <a className ="logout mm" onClick={logout}>Logout</a>
           </>
         )}
         {!username && (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link  
+                  className={`mm ${isActive('/login')?'active': ''}`} 
+                  to="/login">Login
+            </Link>
+
+
+            <Link 
+                 className={`mm ${isActive('/register')?'active': ''}`} 
+                 to="/register">Register
+            </Link>
+
           </>
         )}
       </nav>
     </header>
+   
+  </>
+   
   );
 }

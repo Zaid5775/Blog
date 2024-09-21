@@ -8,6 +8,8 @@ import IndexPage from './pages/IndexPage.js';
 import LoginPage from './pages/LoginPage.js';
 import RegisterPage from './pages/RegisterPage.js';
 import { UserContextProvider } from './UserContext.js';
+import CreatePost from './pages/CreatePost.js';
+import Footer from './pages/Footer.js';
 function App() {
   return (
 
@@ -20,6 +22,9 @@ function App() {
 <Route index element = {<IndexPage/>} />
 <Route path='/login' element = {<LoginPage/>} />
 <Route path='/register' element = {<RegisterPage/>} />
+<Route path='create' element ={<CreatePost/>}/>
+
+
 </Route>
 
 </Routes>

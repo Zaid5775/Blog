@@ -3,8 +3,12 @@ const express = require('express');
 const cors = require('cors');
 const { default: mongoose } = require('mongoose');
 const User = require('./models/User')
+const Post = require('./models/Post')
 const app = express();
 const cookieParser = require('cookie-parser')
+const multer = require('multer')
+const uploadMiddleware  = multer({dest : 'uploads/'})
+const fs = require('fs')
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -14,7 +18,7 @@ app.use(express.json());
 
 const jwt = require('jsonwebtoken');
 app.use(cookieParser());
-mongoose.connect(process.env.MY, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MY);
 
 
 
@@ -69,15 +73,38 @@ app.post('/login', async (req,res) => {
 
 
 
-
+// index.js (backend)
   app.post('/logout', (req,res) => {
     res.cookie('token', '').json('ok');
   });
   
 
 
+  //create post
+  app.post('/post', uploadMiddleware.single('file') , async(req, res ) =>{
+  
+      const {originalname, path} = req.file;
+      const parts = originalname.split('.');
+      const ext = parts[parts.length-1];
+      const newPath = path + '.' + ext
+      fs.renameSync(path, newPath);
+      const{title, summary, content} = req.body;
+      const postDoc = await Post.create({
+          title,
+          summary,
+          content,
+          cover: newPath
+      })
+
+      res.json(postDoc);
+  })
 
 
+
+  app.get('/post', async (req, res) =>{
+    const posts = await Post.find();
+    
+  })
 
 
 
