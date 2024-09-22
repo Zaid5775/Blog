@@ -42,9 +42,11 @@ header nav{
   
 }
 
-img{
+.image-post  img{
   max-width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  width: 350px;
+  height: 180px;
+  box-shadow: rgba(0, 0, 0, 0.267) 0px 4px 12px;
 }
 
 .post{

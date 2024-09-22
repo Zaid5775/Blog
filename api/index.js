@@ -10,11 +10,13 @@ const multer = require('multer')
 const uploadMiddleware  = multer({dest : 'uploads/'})
 const fs = require('fs')
 
+
 const dotenv = require('dotenv');
 dotenv.config();
 
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
+app.use('/uploads' , express.static(__dirname + '/uploads'))
 
 const jwt = require('jsonwebtoken');
 app.use(cookieParser());
@@ -88,21 +90,38 @@ app.post('/login', async (req,res) => {
       const ext = parts[parts.length-1];
       const newPath = path + '.' + ext
       fs.renameSync(path, newPath);
-      const{title, summary, content} = req.body;
-      const postDoc = await Post.create({
-          title,
-          summary,
-          content,
-          cover: newPath
-      })
 
-      res.json(postDoc);
+
+      const {token} =  req.cookies;
+      jwt.verify(token, process.env.SECRET, {}, async (err, info) =>{
+        if(err) throw err;
+        const{title, summary, content} = req.body;
+        const postDoc = await Post.create({
+            title,
+            summary,
+            content,
+            cover: newPath,
+            author: info.id
+        })
+  
+        res.json(postDoc);
+
+
+      })
+      
+     
   })
 
 
 
   app.get('/post', async (req, res) =>{
-    const posts = await Post.find();
+     res.json(await Post.find()
+      
+        .populate('author', ['username'])
+        .sort({createdAt: -1})
+        .limit(20)
+          
+      );
     
   })
 
