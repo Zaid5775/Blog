@@ -45,8 +45,45 @@ export default function Header() {
   const isActive = (path) => location.pathname === path;
 
   return (
+<<<<<<< HEAD
     <header className={isScrolled ? 'shadow' : ''}>
       <Link to="/Blog" className={`logo ${isActive('/Blog') ? 'active' : ''}`}>MyBlog</Link>
+=======
+    <>
+
+      <header className={isScrolled ? 'shadow' : ''}>
+        <Link to="/Blog" className={`logo ${isActive('/Blog') ? 'active' : ''}`}>MyBlog</Link>
+        <nav>
+          {username && (
+            <>
+              <Link 
+                className={`mm ${isActive('/create') ? 'active' : ''}`} 
+                to="/create">Create new post 
+              </Link>
+              <a className="logout mm" onClick={logout}>Logout</a>
+            </>
+          )}
+          {!username && (
+            <>
+              <Link  
+                className={`mm ${isActive('/login') ? 'active' : ''}`} 
+                to="/login">Login
+              </Link>
+              <Link 
+                className={`mm ${isActive('/register') ? 'active' : ''}`} 
+                to="/register">Register
+              </Link>
+            </>
+          )}
+        </nav>
+     
+      </header>
+  
+    </>
+
+    <header>
+      <Link to="/Blog" className={`logo ${isActive('/Blog')?'active': ''}`}>MyBlog</Link>
+>>>>>>> origin/main
       <nav>
         {username ? (
           <>
@@ -61,5 +98,12 @@ export default function Header() {
         )}
       </nav>
     </header>
+<<<<<<< HEAD
+=======
+   
+  </>
+   
+
+>>>>>>> origin/main
   );
 }
