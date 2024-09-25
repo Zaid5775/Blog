@@ -32,7 +32,7 @@ export default function Header() {
   return (
     <>
     <header>
-      <Link to="/" className={`logo ${isActive('/')?'active': ''}`}>MyBlog</Link>
+      <Link to="/Blog" className={`logo ${isActive('/')?'active': ''}`}>MyBlog</Link>
       <nav>
         {username && (
           <>
