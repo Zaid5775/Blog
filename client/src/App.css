@@ -5,60 +5,90 @@
 * {
   box-sizing: border-box;
   font-family: 'CustomFont';
+  background-color: #dadcdb;;
   
 }
 
 body{
-  color: #222;
+  color: #313131d7
 }
 main{
   padding: 10px;
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
+  
   
 }
 header{
   display: flex;
-  padding-top: 15px;
+  padding-top: 10px;
   justify-content:  space-between;
   margin-bottom: 50px;
   align-items: center;
+  padding-left: 30px;
+  padding-bottom: 7px;
+  padding-right: 30px;
   
-  
+  border-radius: 15px;
+ 
+   position:fixed;
+   z-index: 1000;
+   width: 800px;
+ 
+   transition: box-shadow 0.3s ease;
+
 }
+
+header.shadow{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
 header a{
   text-decoration: none;
   color : inherit;
+  background-color: rgba(255, 255, 255, 0);
+  
+}
+
+.title h2{
+  text-decoration: none;
 }
 
 header a.logo{
   font-weight: bold;
   font-size: 1.8rem;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 header nav{
   gap: 15px;
   display: flex;
-  
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .image-post  img{
   max-width: 100%;
-  width: 350px;
-  height: 180px;
+ 
   box-shadow: rgba(0, 0, 0, 0.267) 0px 4px 12px;
 }
 
 .post{
+  margin-top: 100px;
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 20px;
   margin-bottom: 30px;
 }
 
-.post .content h2{
+.post .content a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.post .content  h2{
   margin: 0;
   font-size: 1.6rem;
+  text-decoration: none;
 }
 
 .post .info{
@@ -158,4 +188,108 @@ form .file-input{
   text-decoration: none;
   color: #222;
   
+}
+
+
+
+
+div.post-page div.image{
+  max-height:300px;
+  display: flex;
+  overflow:hidden;
+}
+div.post-page div.image img{
+  object-fit: cover;
+  object-position: center center;
+  width: 100%;
+}
+div.post-page a{
+  color:#333;
+  text-decoration: underline;
+}
+div.post-page h1{
+  
+  font-size: 50px;
+  text-align: center;
+  margin: 10px 0 5px;
+}
+div.post-page time{
+  text-align: center;
+  display: block;
+  font-size:.8rem;
+  color:#aaa;
+  margin: 5px 0;
+}
+div.post-page div.author{
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: .7rem;
+  font-weight: bold;
+}
+div.content-main p{
+  line-height: 1.7rem;
+  margin: 30px 0;
+}
+div.content-main li{
+  margin-bottom: 10px;
+}
+div.edit-row{
+  text-align: center;
+  margin-bottom: 20px;
+}
+div.post-page a.edit-btn{
+  background-color: #333;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  padding:12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+div.post-page a.edit-btn:hover{
+  background-color: #0f0f0f;
+}
+a svg{
+  height:20px;
+}
+
+
+
+.shape {
+  position: absolute;
+  border-radius: 45%;
+  opacity: 0.3;
+  z-index: -1; /* Place shapes behind content */
+}
+
+.shape-one {
+  background-color: #6b737227 ;/* Light pink */
+  width: 450px; /* Increase size */
+  height: 450px; /* Increase size */
+  top: 50%; /* Adjust position */
+  left: -100px; /* Position it to the left outside of main content */
+}
+
+.shape-two {
+  background-color: #c3e1f0; /* Light blue */
+  width: 10px; /* Increase size */
+  height: 0px; /* Increase size */
+  top: 40%; /* Adjust position */
+  left: 50%; /* Start from the center */
+  transform: translate(-150%, -50%); /* Center this shape while pushing it outside */
+}
+
+.shape-three {
+  background-color: #e1f0c3; /* Light green */
+  width: 250px; /* Increase size */
+  height: 250px; /* Increase size */
+  bottom: 15%; /* Adjust position */
+  right: -100px; /* Position it to the right outside of main content */
+}
+
+@media screen and (min-width: 700px) {
+  div.post{
+      grid-template-columns: .9fr 1.1fr;
+  }
 }

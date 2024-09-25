@@ -1,25 +1,33 @@
-import  Image1  from './meetmate.png'
+import { Link } from 'react-router-dom'
 
 import {format} from 'date-fns'
 
-export default function Post({title, summary, cover, content, createdAt}){
+export default function Post({_id,title, summary, cover, content, createdAt, author}){
 
 
     return(
         <>
-        
+       
     <div className = "post">
       {/* 1 */}
+      
 
       <div className='image-post'>
-      <img src = {'http://localhost:4000/' + cover} alt = "Random"></img>
+       
+        <Link to = {`/post/${_id}`}>
+        <img src = {'https://blog-backa.onrender.com/' + cover} alt = "Random"/>
+        </Link> 
       </div>
 
       <div className = "content">
 
-      <h2>{title}</h2>
+        <Link to = {`/post/${_id}`}>
+            <h2>{title}</h2>
+        </Link>
+
+      
       <p className='info'>
-      <a className='author'>Zaid Shaikh</a>
+      <a className='author'>{author.username}</a>
       <time>{format(new Date(createdAt), 'MMM d, yyyy HH:mm')}</time>
       </p>
       <p className='summary'>{summary}</p>

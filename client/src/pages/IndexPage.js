@@ -8,7 +8,7 @@ export default function IndexPage(){
 
     useEffect(() => {
 
-        fetch('http://localhost:4000/post').then(response =>{
+        fetch('https://blog-backa.onrender.com/post').then(response =>{
             response.json().then(posts =>{
                 setPosts(posts)
             })
@@ -18,6 +18,10 @@ export default function IndexPage(){
     return(
     
         <>
+ <div class="shape shape-one"></div>
+    
+    <div class="shape shape-three"></div>
+    
 
         {posts.length >0 && posts.map(post => (
             <Post {...post}/>
