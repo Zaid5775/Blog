@@ -24,7 +24,7 @@ export default function CreatePost(){
             body: data,
             credentials: 'include'})
         if(response.ok){setRedirect(true)}else alert("Post cant be created, Try again!")}
-        if(redirect){return <Navigate to = {'/'}/>}
+        if(redirect){return <Navigate to = {'/Blog'}/>}
 
 
 
