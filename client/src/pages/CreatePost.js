@@ -34,7 +34,7 @@ export default function CreatePost() {
     }
 
     if (redirect) {
-        return <Navigate to='/Blog' />;
+        return <Navigate to='/' />;
     }
 
     return (

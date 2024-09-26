@@ -26,7 +26,7 @@ export default function LoginPage() {
   }
 
   if (redirect) {
-    return <Navigate to={'/Blog'} />
+    return <Navigate to={'/'} />
   }
   return (
     <form className="login" onSubmit={login}>

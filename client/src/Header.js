@@ -46,17 +46,17 @@ export default function Header() {
 
   return (
     <header className={isScrolled ? 'shadow' : ''}>
-      <Link to="/Blog" className={`logo ${isActive('/Blog') ? 'active' : ''}`}>MyBlog</Link>
+      <Link to="/" className={`logo ${isActive('/') ? 'active' : ''}`}>MyBlog</Link>
       <nav>
         {username ? (
           <>
-            <Link className={`mm ${isActive('/Blog/create') ? 'active' : ''}`} to="/Blog/create">Create new post</Link>
+            <Link className={`mm ${isActive('/create') ? 'active' : ''}`} to="/create">Create new post</Link>
             <a className="logout mm" onClick={logout}>Logout</a>
           </>
         ) : (
           <>
-            <Link className={`mm ${isActive('/Blog/login') ? 'active' : ''}`} to="/Blog/login">Login</Link>
-            <Link className={`mm ${isActive('/Blog/register') ? 'active' : ''}`} to="/Blog/register">Register</Link>
+            <Link className={`mm ${isActive('/login') ? 'active' : ''}`} to="/login">Login</Link>
+            <Link className={`mm ${isActive('/register') ? 'active' : ''}`} to="/register">Register</Link>
           </>
         )}
       </nav>
