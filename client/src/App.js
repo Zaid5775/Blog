@@ -12,7 +12,7 @@ function App() {
   return (
 
     <UserContextProvider>
-      <HashRouter>
+     
 <Routes>
 
 <Route path = '/' element = {<Layout/>}>
@@ -25,7 +25,7 @@ function App() {
 </Route>
 
 </Routes>
-</HashRouter>
+
 
 
     </UserContextProvider>
