@@ -258,40 +258,47 @@ a svg{
 
 
 
-.shape {
-  position: absolute;
-  border-radius: 45%;
-  opacity: 0.3;
-  z-index: -1; /* Place shapes behind content */
-}
 
-.shape-one {
-  background-color: #6b737227 ;/* Light pink */
-  width: 450px; /* Increase size */
-  height: 450px; /* Increase size */
-  top: 50%; /* Adjust position */
-  left: -100px; /* Position it to the left outside of main content */
-}
 
-.shape-two {
-  background-color: #c3e1f0; /* Light blue */
-  width: 10px; /* Increase size */
-  height: 0px; /* Increase size */
-  top: 40%; /* Adjust position */
-  left: 50%; /* Start from the center */
-  transform: translate(-150%, -50%); /* Center this shape while pushing it outside */
-}
 
-.shape-three {
-  background-color: #e1f0c3; /* Light green */
-  width: 250px; /* Increase size */
-  height: 250px; /* Increase size */
-  bottom: 15%; /* Adjust position */
-  right: -100px; /* Position it to the right outside of main content */
-}
 
-@media screen and (min-width: 700px) {
-  div.post{
-      grid-template-columns: .9fr 1.1fr;
+
+
+
+
+@media (max-width: 768px) {
+  /* Adjust header */
+  header {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
   }
+
+  /* Collapse navigation */
+  header nav {
+    margin-right: 20px;
+  }
+
+  
+
+  
+  /* Post grid */
+  .post {
+    grid-template-columns: 1fr;
+  }
+
+  /* Image size */
+  .image-post img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Font sizes */
+  .post .content h2 {
+    font-size: 1.8rem;
+  }
+
+
+  
+  /* Other adjustments as needed */
 }
