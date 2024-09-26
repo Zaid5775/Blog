@@ -25,7 +25,9 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    fetch('https://blog-backa.onrender.com/profile', {
+    // https://blog-backa.onrender.com
+    // http://localhost:4000
+    fetch('http://localhost:4000/profile', {
       credentials: 'include',
     }).then(response => {
       response.json().then(userInfo => {
@@ -35,7 +37,7 @@ export default function Header() {
   }, [setUserInfo]);
 
   function logout() {
-    fetch('https://blog-backa.onrender.com/logout', {
+    fetch('http://localhost:4000/logout', {
       credentials: 'include',
       method: 'POST',
     }).then(() => setUserInfo(null));
@@ -50,7 +52,7 @@ export default function Header() {
       <nav>
         {username ? (
           <>
-            <Link className={`mm ${isActive('/create') ? 'active' : ''}`} to="/create">Create new post</Link>
+            <Link className={`mm ${isActive('/create') ? 'active' : ''}`} to="/create">Create a post</Link>
             <a className="logout mm" onClick={logout}>Logout</a>
           </>
         ) : (

@@ -15,7 +15,7 @@ export default function Post({_id,title, summary, cover, content, createdAt, aut
       <div className='image-post'>
        
         <Link to = {`/post/${_id}`}>
-        <img src = {'https://blog-backa.onrender.com/' + cover} alt = "Random"/>
+        <img src = {'http://localhost:4000/' + cover} alt = "Image"/>
         </Link> 
       </div>
 

@@ -20,7 +20,7 @@ export default function CreatePost() {
             data.set('file', files[0]);
         }
 
-        const response = await fetch('https://blog-backa.onrender.com/post', {
+        const response = await fetch('http://localhost:4000/post', {
             method: "POST",
             body: data,
             credentials: 'include'
@@ -38,7 +38,7 @@ export default function CreatePost() {
     }
 
     return (
-        <form onSubmit={createNewPost}>
+        <form  className = 'create'onSubmit={createNewPost}>
             <input 
                 required
                 type="text" 
