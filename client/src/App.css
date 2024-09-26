@@ -115,6 +115,7 @@ header nav{
 form.login, form.register{
   max-width: 400px;
   margin: 0 auto;
+  margin-top: 100px;
 }
 
 
@@ -169,6 +170,7 @@ form .file-input{
 
 .mm{
   padding-bottom: 5px;
+  
 }
 
 
