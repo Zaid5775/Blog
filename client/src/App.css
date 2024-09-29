@@ -10,7 +10,7 @@
 }
 
 body{
-  color: #88888d;
+  color: #5F6F65;
  
  
 }
@@ -35,7 +35,7 @@ header{
   
    position:fixed;
    z-index: 1000;
-   width: 800px;
+   width: 771px;
  
    transition: box-shadow 0.3s ease;
 
@@ -303,7 +303,7 @@ footer nav1{
 footer nav2{
   display: flex;
   justify-content: center; /* Center the links */
-  gap: 10px; /* Space between links */
+  gap: 17px; /* Space between links */
 }
 
 footer nav1{
@@ -317,7 +317,12 @@ footer nav1{
 }
 
 .footer1:hover {
-  color: #44494e;; /* Color change on hover */
+  color: #44494e;
+}
+
+
+footer nav2 img{
+  width: 23px;
 }
 
 .line {
@@ -327,6 +332,96 @@ footer nav1{
   margin-bottom: 20px; /* Space below the line */
 }
 
+
+
+
+.container3{
+  margin-top: 30px;
+}
+
+.main1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.main-img{
+  align-items: center;
+  margin-top: 80px;
+  width: 200px;
+}
+
+.main-text{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  align-items: center;
+  
+  
+  
+  
+}
+
+.main-text-left h2{
+ 
+  color: rgb(75,75,75);
+  font-size: 40px;
+  margin-right: 0px;
+}
+.main-text-right p{
+  color: rgb(75,75,75);
+  font-size: 20px;
+  line-height: 1.5em;
+  
+  text-align: center;
+
+}
+
+.social-acc{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+
+}
+.social1 img {
+  margin: 7px;
+  line-height: 2em; 
+  width: 30px;
+}
+
+
+.tnc{
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 800px){
+  .main-text-right p{
+      color: rgb(75,75,75);
+      font-size: 14px;
+      line-height: 2em;
+      padding-right: 25px;
+      padding-left: 25px;
+      text-align: left;
+
+  
+  }
+  
+.main-img{
+  align-items: center;
+  margin-top: 10px;
+  width: 150px;
+}
+
+.main-text-right span{
+  color: #0b8;
+  font-size: 30px;
+}
+  
+}
+
+
+
 @media (max-width: 768px) {
   /* Adjust header */
   header {
@@ -335,15 +430,16 @@ footer nav1{
     padding-right: 15px;
   }
 
+ 
   /* Collapse navigation */
   header nav {
     margin-top: 10px;
     margin-right: 20px;
-    font-size: .9rem;
+    font-size: 1rem;
   }
 
   header a.logo{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
   
   .create input{
@@ -366,7 +462,11 @@ footer nav1{
   .post .content h2 {
     font-size: 1.8rem;
   }
-
+  .main-img{
+    align-items: center;
+    margin-top: 60px;
+    width: 150px;
+  }
 
   
   /* Other adjustments as needed */

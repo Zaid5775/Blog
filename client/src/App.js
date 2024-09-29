@@ -9,6 +9,8 @@ import { UserContextProvider } from './UserContext.js';
 import CreatePost from './pages/CreatePost.js';
 import PostPage from './pages/PostPage.js';
 import EditPost from './pages/EditPost.js';
+import AboutPage from './pages/AboutPage.js';
+import TermsAndConditions from './pages/TnC.js';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
 <Route path='/login' element = {<LoginPage/>} />
 <Route path='/register' element = {<RegisterPage/>} />
 <Route path='create' element ={<CreatePost/>}/>
+<Route path="/about" element={<AboutPage />} />
+<Route path="/terms-&-conditions" element={< TermsAndConditions/>} />
 <Route path="/post/:id" element={<PostPage />} />
 <Route path="/edit/:id" element={<EditPost />} />
 

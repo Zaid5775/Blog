@@ -11,7 +11,7 @@ export default function PostPage() {
   const {userInfo} = useContext(UserContext);
   const {id} = useParams();
   useEffect(() => {
-    fetch(`https://blog-backa.onrender.com/post/${id}`)
+    fetch(`https://blog-backa.onrender.com/${id}`)
       .then(response => {
         response.json().then(postInfo => {
           setPostInfo(postInfo);

@@ -5,6 +5,7 @@ import footer from './pages/Footer'
 
 export default function Header() {
   const location = useLocation();
+  
   const { setUserInfo, userInfo } = useContext(UserContext);
   
   // State to track if the user has scrolled down
@@ -41,6 +42,7 @@ export default function Header() {
     fetch('https://blog-backa.onrender.com/logout', {
       credentials: 'include',
       method: 'POST',
+
     }).then(() => setUserInfo(null));
   }
 
