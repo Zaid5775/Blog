@@ -11,6 +11,8 @@
 
 body{
   color: #88888d;
+ 
+ 
 }
 main{
   padding: 10px;
@@ -42,6 +44,7 @@ header{
 header.shadow{
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   background-color: #ffffff42;
+  backdrop-filter: blur(5px); /* Blurry effect */
 }
 
 header a{
@@ -272,18 +275,62 @@ a svg{
 
 
 
+.create{
+  margin-top: 100px;
+}
 
 
 
 
 
+footer {
+  
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  
+  left: 0;
+  right: 0;
+  bottom: 0;
+ 
+}
 
+footer nav1{
+  display: flex;
+  justify-content: center; /* Center the links */
+  gap: 20px; /* Space between links */
+}
+footer nav2{
+  display: flex;
+  justify-content: center; /* Center the links */
+  gap: 10px; /* Space between links */
+}
 
+footer nav1{
+  margin-top: 10px
+}
+.footer1 {
+  color: #6c757d; /* Soft text color */
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.footer1:hover {
+  color: #44494e;; /* Color change on hover */
+}
+
+.line {
+  width: 100%; /* Full width */
+  height: 2px; /* Line thickness */
+  background-color: #ccc; /* Line color */
+  margin-bottom: 20px; /* Space below the line */
+}
 
 @media (max-width: 768px) {
   /* Adjust header */
   header {
-    width: 95%;
+    width: 94.6%;
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -292,8 +339,12 @@ a svg{
   header nav {
     margin-top: 10px;
     margin-right: 20px;
+    font-size: .9rem;
   }
 
+  header a.logo{
+    font-size: 1.2rem;
+  }
   
   .create input{
     font-size: 14px;

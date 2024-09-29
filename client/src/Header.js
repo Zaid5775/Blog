@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
+import footer from './pages/Footer'
 
 export default function Header() {
   const location = useLocation();
@@ -27,7 +28,7 @@ export default function Header() {
   useEffect(() => {
     // https://blog-backa.onrender.com
     // http://localhost:4000
-    fetch('https://blog-backa.onrender.com/profile', {
+    fetch('http://localhost:4000/profile', {
       credentials: 'include',
     }).then(response => {
       response.json().then(userInfo => {
@@ -37,7 +38,7 @@ export default function Header() {
   }, [setUserInfo]);
 
   function logout() {
-    fetch('https://blog-backa.onrender.com/logout', {
+    fetch('http://localhost:4000/logout', {
       credentials: 'include',
       method: 'POST',
     }).then(() => setUserInfo(null));
@@ -47,6 +48,7 @@ export default function Header() {
   const isActive = (path) => location.pathname === path;
 
   return (
+ 
     <header className={isScrolled ? 'shadow' : ''}>
       <Link to="/" className={`logo ${isActive('/') ? 'active' : ''}`}>MyBlog</Link>
       <nav>
@@ -63,5 +65,7 @@ export default function Header() {
         )}
       </nav>
     </header>
+    
+   
   );
 }

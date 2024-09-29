@@ -27,6 +27,7 @@ export default function IndexPage(){
             <Post {...post}/>
         ))}
         
+        <Footer/>
         </>
 
     );

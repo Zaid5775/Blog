@@ -3,13 +3,15 @@ import {useParams} from "react-router-dom";
 import {format} from "date-fns";
 import {UserContext} from "../UserContext";
 import {Link} from 'react-router-dom';
+import Footer from "./Footer";
+
 
 export default function PostPage() {
   const [postInfo,setPostInfo] = useState(null);
   const {userInfo} = useContext(UserContext);
   const {id} = useParams();
   useEffect(() => {
-    fetch(`https://blog-backa.onrender.com/post/${id}`)
+    fetch(`http://localhost:4000/post/${id}`)
       .then(response => {
         response.json().then(postInfo => {
           setPostInfo(postInfo);
@@ -20,6 +22,7 @@ export default function PostPage() {
   if (!postInfo) return 'Nothing is there';
 
   return (
+    <>
     <div className="post-page">
       <h1>{postInfo.title}</h1>
       <time>{format(new Date(postInfo.createdAt), 'MMM d, yyyy HH:mm')}</time>
@@ -35,9 +38,12 @@ export default function PostPage() {
         </div>
       )}
       <div className="image">
-        <img src={`https://blog-backa.onrender.com/${postInfo.cover}`} alt="img error"/>
+        <img src={`http://localhost:4000/${postInfo.cover}`} alt="img error"/>
       </div>
       <div className="content-main" dangerouslySetInnerHTML={{__html:postInfo.content}} />
     </div>
+    
+    <Footer/>
+   </>
   );
 }

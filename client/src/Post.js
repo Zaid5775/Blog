@@ -1,170 +1,58 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import ContentLoader from 'react-content-loader';
+import { format } from 'date-fns';
+import { useState, useEffect } from 'react';
 
-import {format} from 'date-fns'
+export default function Post({_id, title, summary, cover, createdAt, author}) {
+    const [loading, setLoading] = useState(true);
 
-export default function Post({_id,title, summary, cover, content, createdAt, author}){
+    // Assuming data is fetched at a higher level, you are passing props down
+    // We will stop loading once all data is available
+    useEffect(() => {
+        if (_id && title && summary && cover && author) {
+            setLoading(false); // Stop loading once all props are received
+        }
+    }, [_id, title, summary, cover, author]);
 
+    // Define a skeleton loader for posts
+    const PostSkeleton = () => (
+        <ContentLoader 
+            speed={2}
+            width={400}
+            height={160}
+            viewBox="0 0 400 160"
+            backgroundColor="#f3f3f3"
+            foregroundColor="#ecebeb"
+        >
+            <rect x="0" y="0" rx="5" ry="5" width="100%" height="100px" />
+            <rect x="0" y="110" rx="5" ry="5" width="70%" height="20px" />
+            <rect x="0" y="140" rx="5" ry="5" width="50%" height="15px" />
+        </ContentLoader>
+    );
 
-    return(
-        <>
-       
-    <div className = "post">
-      {/* 1 */}
-      
+    if (loading) {
+        // Show skeleton while loading
+        return <PostSkeleton />;
+    }
 
-      <div className='image-post'>
-       
-        <Link to = {`/post/${_id}`}>
-        <img src = {'https://blog-backa.onrender.com/' + cover} alt = "Image"/>
-        </Link> 
-      </div>
-
-      <div className = "content">
-
-        <Link to = {`/post/${_id}`}>
-            <h2>{title}</h2>
-        </Link>
-
-      
-      <p className='info'>
-      <a className='author'>{author.username}</a>
-      <time>{format(new Date(createdAt), 'MMM d, yyyy HH:mm')}</time>
-      </p>
-      <p className='summary'>{summary}</p>
-      
-      </div>
-      
-    </div>
-
-
-
-
-
-
-        </>
-    )
+    // Once the data is ready, display the post
+    return (
+        <div className="post">
+            <div className="image-post">
+                <Link to={`/post/${_id}`}>
+                    <img src={`http://localhost:4000/${cover}`} alt="Post Cover" />
+                </Link>
+            </div>
+            <div className="content">
+                <Link to={`/post/${_id}`}>
+                    <h2>{title}</h2>
+                </Link>
+                <p className="info">
+                    <a className="author">{author.username}</a>
+                    <time>{format(new Date(createdAt), 'MMM d, yyyy HH:mm')}</time>
+                </p>
+                <p className="summary">{summary}</p>
+            </div>
+        </div>
+    );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import  Image1  from './meetmate.png'
-// import Image2 from './cipher.png'
-// import Image3 from './cybrix.png'
-// export default function Post({title, summary, cover, content}){
-
-
-//     return(
-//         <>
-        
-//     <div className = "post">
-//       {/* 1 */}
-
-//       <div className='image'>
-//       <img src = {Image1} alt = "Random"></img>
-//       </div>
-
-//       <div className = "content">
-
-//       <h2>MeetMate</h2>
-//       <p className='info'>
-//       <a className='author'>Zaid Shaikh</a>
-//       <time>12-09-2024 18:31</time>
-//       </p>
-//       <p className='summary'>An AI tool for fast audio and transcript summarization using React.js, Flask, and NLP tech. Simplify meetings with concise summaries.</p>
-      
-//       </div>
-      
-//     </div>
-
-
-
-
-//     <div className = "post">
-//       {/* 1 */}
-
-//       <div className='image'>
-//       <img src = {Image2} alt = "Random"></img>
-//       </div>
-
-//       <div className = "content">
-
-//       <h2>Cipherscape</h2>
-//       <p className='info'>
-//       <a className='author'>Zaid Shaikh</a>
-//       <time>13-09-2024 17:49</time>
-//       </p>
-//       <p className='summary'>A text-based puzzle adventure game built with React.js, MongoDB, and JavaScript. Solve challenging ciphers and explore mysterious narratives.</p>
-      
-//       </div>
-      
-//     </div>
-
-
-
-//     <div className = "post">
-//       {/* 1 */}
-
-//       <div className='image'>
-//       <img src = {Image3} alt = "Random"></img>
-//       </div>
-
-//       <div className = "content">
-
-//       <h2>Cybrix</h2>
-//       <p className='info'>
-//       <a className='author'>Zaid Shaikh</a>
-//       <time>13-09-2024 16:41</time>
-//       </p>
-//       <p className='summary'>A web app for real-time vulnerability scanning and reporting, built with React.js and Flask. It helps secure systems with actionable insights.</p>
-      
-//       </div>
-      
-//     </div>
-
-
-
-//         </>
-//     )
-// }

@@ -3,6 +3,8 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Navigate } from 'react-router-dom';
 
+import Editor from "../Editor";
+
 export default function CreatePost() {
     const [title, setTitle] = useState('');
     const [summary, setSummary] = useState('');
@@ -20,7 +22,7 @@ export default function CreatePost() {
             data.set('file', files[0]);
         }
 
-        const response = await fetch('https://blog-backa.onrender.com/post', {
+        const response = await fetch('http://localhost:4000/post', {
             method: "POST",
             body: data,
             credentials: 'include'
@@ -59,11 +61,7 @@ export default function CreatePost() {
                 type="file"
                 onChange={ev => setFiles(ev.target.files)}  
             />
-            <ReactQuill 
-                required
-                value={content}
-                onChange={newValue => setContent(newValue)} 
-            />
+             <Editor value={content} onChange={setContent} />
             <button style={{ marginTop: '5px' }}>Create post</button>
         </form>
     );
