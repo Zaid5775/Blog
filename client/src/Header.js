@@ -29,7 +29,7 @@ export default function Header() {
   useEffect(() => {
     // https://blog-backa.onrender.com
     // http://localhost:4000
-    fetch('http://localhost:4000/profile', {
+    fetch('https://blog-backa.onrender.com/profile', {
       credentials: 'include',
     }).then(response => {
       response.json().then(userInfo => {
@@ -39,7 +39,7 @@ export default function Header() {
   }, [setUserInfo]);
 
   function logout() {
-    fetch('http://localhost:4000/logout', {
+    fetch('https://blog-backa.onrender.com/logout', {
       credentials: 'include',
       method: 'POST',
 

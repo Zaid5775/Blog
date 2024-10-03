@@ -3,18 +3,26 @@ import ContentLoader from 'react-content-loader';
 import { format } from 'date-fns';
 import { useState, useEffect } from 'react';
 
-export default function Post({_id, title, summary, cover, createdAt, author}) {
+export default function Post({ _id, title, summary, cover, createdAt, author }) {
     const [loading, setLoading] = useState(true);
 
-    // Assuming data is fetched at a higher level, you are passing props down
-    // We will stop loading once all data is available
+    // This effect simulates the fetching of data and can be removed if you're getting props directly
     useEffect(() => {
-        if (_id && title && summary && cover && author) {
-            setLoading(false); // Stop loading once all props are received
-        }
-    }, [_id, title, summary, cover, author]);
+        const fetchData = async () => {
+            // Simulate data fetching delay (remove this if you are directly getting data as props)
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            setLoading(false); // Stop loading after fetching data
+        };
 
-    // Define a skeleton loader for posts
+        fetchData();
+
+        // You can return a cleanup function if needed, but not necessary in this case
+        return () => {
+            setLoading(true); // Reset loading state on unmount if needed
+        };
+    }, []); // Empty dependency array ensures this only runs once
+
+    // Define a skeleton loader for posts within the same component
     const PostSkeleton = () => (
         <ContentLoader 
             speed={2}
@@ -30,8 +38,8 @@ export default function Post({_id, title, summary, cover, createdAt, author}) {
         </ContentLoader>
     );
 
-    if (loading) {
-        // Show skeleton while loading
+    // If loading, show the skeleton loader
+    if (loading || !_id || !title || !summary || !cover || !author) {
         return <PostSkeleton />;
     }
 
@@ -40,7 +48,7 @@ export default function Post({_id, title, summary, cover, createdAt, author}) {
         <div className="post">
             <div className="image-post">
                 <Link to={`/post/${_id}`}>
-                    <img src={`http://localhost:4000/${cover}`} alt="Post Cover" />
+                    <img src={`https://blog-backa.onrender.com/${cover}`} alt="Post Cover" />
                 </Link>
             </div>
             <div className="content">
