@@ -6,7 +6,7 @@ const TermsAndConditions = () => {
 
 
         <>
-        <div className = 'tnc'>
+  
         <div   style={{ padding: '20px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6'  }}>
             <h1>Terms and Conditions</h1>
             <p><strong>Effective Date:</strong> 30 Sep 2024</p>
@@ -63,7 +63,7 @@ const TermsAndConditions = () => {
             <h2>12. Contact Information</h2>
             <p>If you have any questions or concerns regarding these Terms and Conditions, please contact us at [Insert Contact Email].</p>
         </div>
-        </div>
+      
         <Footer/>
         </>
     );

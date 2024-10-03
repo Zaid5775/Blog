@@ -29,7 +29,7 @@ export default function Header() {
   useEffect(() => {
     // https://blog-backa.onrender.com
     // http://localhost:4000
-    fetch('https://blog-backa.onrender.com/profile', {
+    fetch('http://localhost:4000/profile', {
       credentials: 'include',
     }).then(response => {
       response.json().then(userInfo => {
@@ -39,7 +39,7 @@ export default function Header() {
   }, [setUserInfo]);
 
   function logout() {
-    fetch('https://blog-backa.onrender.com/logout', {
+    fetch('http://localhost:4000/logout', {
       credentials: 'include',
       method: 'POST',
 
@@ -50,7 +50,7 @@ export default function Header() {
   const isActive = (path) => location.pathname === path;
 
   return (
- 
+    <div className="hdr">
     <header className={isScrolled ? 'shadow' : ''}>
       <Link to="/" className={`logo ${isActive('/') ? 'active' : ''}`}>MyBlog</Link>
       <nav>
@@ -66,7 +66,7 @@ export default function Header() {
           </>
         )}
       </nav>
-    </header>
+    </header></div>
     
    
   );

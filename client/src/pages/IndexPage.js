@@ -8,7 +8,7 @@ export default function IndexPage(){
 
     useEffect(() => {
 
-        fetch('https://blog-backa.onrender.com/post').then(response =>{
+        fetch('http://localhost:4000/post').then(response =>{
             response.json().then(posts =>{
                 setPosts(posts)
             })
