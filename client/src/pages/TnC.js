@@ -61,7 +61,7 @@ const TermsAndConditions = () => {
             <p>These Terms and Conditions are governed by and construed in accordance with the laws of [Insert Jurisdiction]. Any disputes arising from these terms will be subject to the exclusive jurisdiction of the courts in [Insert Location].</p>
 
             <h2>12. Contact Information</h2>
-            <p>If you have any questions or concerns regarding these Terms and Conditions, please contact us at [Insert Contact Email].</p>
+            <p>If you have any questions or concerns regarding these Terms and Conditions, please contact us at szaid5775@gmail.com </p>
         </div>
       
         <Footer/>
