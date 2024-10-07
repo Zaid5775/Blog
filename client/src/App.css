@@ -460,7 +460,11 @@ justify-content: space-between;
 
   /* Image size */
   .image-post img {
-    width: 95%;
+   
+      width: 350px;
+      height: 200px;
+    
+    
     height: auto;
   }
 
